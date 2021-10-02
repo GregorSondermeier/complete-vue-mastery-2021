@@ -1,3 +1,11 @@
+const firstName = 'Gregor';
+const lastName = 'Sondermeier';
+
 Vue
-    .createApp({})
-    .mount('#app');
+  .createApp({
+    data: () => ({
+      firstName,
+      lastName,
+    }),
+  })
+  .mount('#app');
