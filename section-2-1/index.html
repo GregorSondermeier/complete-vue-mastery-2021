@@ -14,7 +14,7 @@
         First Name
         <input
           type="text"
-          v-model="firstName"
+          v-model.lazy.trim="firstName"
         />
       </label>
 
@@ -33,6 +33,14 @@
           type="text"
           :value="lastName"
           @input.prevent="setLastName($event, 'Last name event triggered')"
+        />
+      </label>
+
+      <label>
+        Age
+        <input
+          type="number"
+          v-model.number="age"
         />
       </label>
 
