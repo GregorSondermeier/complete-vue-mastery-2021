@@ -27,18 +27,11 @@ const app = Vue.createApp({
 
   methods: {
     copy() {
-      const textArea = document.createElement('textarea');
-      textArea.setAttribute('readonly', '');
-      textArea.style.position = 'absolute';
-      textArea.style.left = '-9999px';
       const sanitizedBoxStyle = this.getBoxStyle.transform
         .trim()
         .replace(/\s+/g, ' ');
-      textArea.value = `transform: ${sanitizedBoxStyle};`;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
+      const valueToCopy = `transform: ${sanitizedBoxStyle};`
+      navigator.clipboard.writeText(valueToCopy);
     },
     reset() {
       Object.keys(initialValues).forEach((key) => {
