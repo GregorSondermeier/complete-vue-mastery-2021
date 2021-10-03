@@ -11,7 +11,8 @@ const app = Vue
       getFullName() {
         return `${this.firstName} ${this.lastName}`
       },
-      setLastName(event) {
+      setLastName(event, message) {
+        console.log(message);
         this.lastName = event.target.value;
       },
       incrementAge() {
