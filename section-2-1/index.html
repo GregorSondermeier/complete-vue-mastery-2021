@@ -23,7 +23,7 @@
         <input
           type="text"
           :value="lastName"
-          @input="setLastName($event, 'Last name event triggered')"
+          @input.prevent="setLastName($event, 'Last name event triggered')"
         />
       </label>
 
