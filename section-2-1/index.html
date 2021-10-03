@@ -8,12 +8,7 @@
   <body>
     <div id="app" v-cloak>
       <p>Hey {{ getFullName() }}!</p>
-      <p>
-        <a :href="url" target="_blank">Link</a>
-      </p>
-      <p v-html="rawUrl"></p>
-
-      <hr />
+      <p>Age: {{age}}</p>
 
       <label>
         First Name
@@ -27,9 +22,20 @@
         Last Name
         <input
           type="text"
-          v-model="lastName"
+          :value="lastName"
+          @input="setLastName"
         />
       </label>
+
+      <button type="button" @click="incrementAge">Age +</button>
+      <button type="button" @click="decrementAge">Age -</button>
+
+      <hr />
+
+      <p>
+        <a :href="url" target="_blank">Link</a>
+      </p>
+      <p v-html="rawUrl"></p>
     </div>
 
     <!-- CDN scripts -->
