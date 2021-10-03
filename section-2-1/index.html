@@ -7,7 +7,7 @@
 
   <body>
     <div id="app" v-cloak>
-      <p>Hey {{ getFullName() }}!</p>
+      <p>Hey {{ fullName }}!</p>
       <p>Age: {{age}}</p>
 
       <label>
@@ -32,7 +32,7 @@
         <input
           type="text"
           :value="lastName"
-          @input.prevent="setLastName($event, 'Last name event triggered')"
+          @input.prevent="setLastName"
         />
       </label>
 

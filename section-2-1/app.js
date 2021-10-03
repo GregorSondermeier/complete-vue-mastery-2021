@@ -9,14 +9,10 @@ const app = Vue
       age: 32,
     }),
     methods: {
-      getFullName() {
-        return `${this.firstName} ${this.middleName || ''} ${this.lastName}`
-      },
       setMiddleName(event) {
         this.middleName = event.target.value;
       },
-      setLastName(event, message) {
-        console.log(message);
+      setLastName(event) {
         this.lastName = event.target.value;
       },
       incrementAge() {
@@ -24,6 +20,12 @@ const app = Vue
       },
       decrementAge() {
         this.age--;
+      },
+    },
+    computed: {
+      fullName() {
+        console.log('computed.fullName()')
+        return `${this.firstName} ${this.middleName || ''} ${this.lastName}`
       },
     }
   });
