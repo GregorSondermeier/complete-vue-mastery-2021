@@ -2,6 +2,7 @@ const app = Vue
   .createApp({
     data: () => ({
       firstName: 'Gregor',
+      middleName: undefined,
       lastName: 'Sondermeier',
       url: 'https://google.com',
       rawUrl: '<a href="https://google.com" target="_blank">Link</a>',
@@ -9,7 +10,10 @@ const app = Vue
     }),
     methods: {
       getFullName() {
-        return `${this.firstName} ${this.lastName}`
+        return `${this.firstName} ${this.middleName || ''} ${this.lastName}`
+      },
+      setMiddleName(event) {
+        this.middleName = event.target.value;
       },
       setLastName(event, message) {
         console.log(message);
