@@ -8,6 +8,10 @@
   <body>
     <div id="app" v-cloak>
       <p>Hey {{ getFullName() }}!</p>
+      <p>
+        <a v-bind:href="url" target="_blank">Link</a>
+      </p>
+
       <hr />
 
       <label>

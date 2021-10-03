@@ -3,6 +3,7 @@ const app = Vue
     data: () => ({
       firstName: 'Gregor',
       lastName: 'Sondermeier',
+      url: 'https://google.com',
     }),
     methods: {
       // error functions won't work because of differences in 'this' binding
