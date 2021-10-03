@@ -1,2 +1,10 @@
-let vm = Vue.createApp({
-}).mount('#app');
+const app = Vue.createApp({
+  data() {
+    return {
+      mode: 1
+    }
+
+  }
+});
+
+const vm = app.mount('#app');
