@@ -1,0 +1,53 @@
+* {
+  --greenLime: #45D619;
+  --orange: #FFC26F;
+  --purple: #767DEA;
+  --text: #424242;
+  --white: #fff;
+}
+
+body {
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+label {
+  margin-bottom: 20px;
+  font-size: 20px;
+  display: block;
+}
+
+select {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+input[type=number] {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  background-color: var(--greenLime);
+  text-align: center;
+  color: var(--white);
+  line-height: 150px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.purple {
+  background-color: var(--purple);
+}
+
+.text-black {
+  color: var(--text);
+}
+
+.text-orange {
+  color: var(--orange);
+}
