@@ -4,6 +4,7 @@ const app = Vue
       firstName: 'Gregor',
       lastName: 'Sondermeier',
       url: 'https://google.com',
+      rawUrl: '<a href="https://google.com" target="_blank">Link</a>'
     }),
     methods: {
       // error functions won't work because of differences in 'this' binding
