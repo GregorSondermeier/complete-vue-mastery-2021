@@ -15,17 +15,36 @@ const app = Vue.createApp({
   computed: {
     getBoxStyle() {
       return {
-        transform: `perspective(${this.perspective}px) rotateX(${this.rotateX}deg) rotateY(${this.rotateY}deg) rotateZ(${this.rotateZ}deg)`,
+        transform: `
+          perspective(${this.perspective}px)
+          rotateX(${this.rotateX}deg)
+          rotateY(${this.rotateY}deg)
+          rotateZ(${this.rotateZ}deg)
+        `,
       };
     }
   },
 
   methods: {
+    copy() {
+      const textArea = document.createElement('textarea');
+      textArea.setAttribute('readonly', '');
+      textArea.style.position = 'absolute';
+      textArea.style.left = '-9999px';
+      const sanitizedBoxStyle = this.getBoxStyle.transform
+        .trim()
+        .replace(/\s+/g, ' ');
+      textArea.value = `transform: ${sanitizedBoxStyle};`;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+    },
     reset() {
       Object.keys(initialValues).forEach((key) => {
         this[key] = initialValues[key];
       });
-    }
+    },
   },
 
   template: `
@@ -73,8 +92,8 @@ const app = Vue.createApp({
           />
         </label>
 
-        <button type="button" @click="reset">Reset</button>
-        <button type="button">Copy</button>
+        <button type="button" @click.prevent="reset">Reset</button>
+        <button type="button" @click.prevent="copy">Copy</button>
       </div>
     </section>
 
