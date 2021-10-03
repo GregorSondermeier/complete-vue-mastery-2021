@@ -27,7 +27,15 @@ const app = Vue
         console.log('computed.fullName()')
         return `${this.firstName} ${this.middleName || ''} ${this.lastName}`
       },
-    }
+    },
+    // watchers are not used often (sounds like they are expensive)
+    watch: {
+      age(newValue, oldValue) {
+        setTimeout(() => {
+          this.age = 32;
+        }, 3000)
+      }
+    },
   });
 
 // vm = viewModel (vueModel? haha)
