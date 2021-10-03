@@ -1,9 +1,15 @@
 const app = Vue
   .createApp({
     data: () => ({
-      firstName: 'Gregor',
-      lastName: 'Sondermeier',
+      firstName: 'wait...',
+      lastName: 'wait...',
     }),
   });
 
-app.mount('#app');
+// vm = viewModel (vueModel? haha)
+const vm = app.mount('#app');
+
+setTimeout(() => {
+  vm.firstName = 'Gregor';
+  vm.lastName = 'Sondermeier';
+}, 2000);
