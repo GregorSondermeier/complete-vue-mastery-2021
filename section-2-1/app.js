@@ -6,7 +6,7 @@ const app = Vue
     }),
     methods: {
       // error functions won't work because of differences in 'this' binding
-      fullName() {
+      getFullName() {
         return `${this.firstName} ${this.lastName.toUpperCase()}`
       }
     }
