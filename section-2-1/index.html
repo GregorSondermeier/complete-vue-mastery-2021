@@ -8,6 +8,23 @@
   <body>
     <div id="app" v-cloak>
       <p>Hey {{ getFullName() }}!</p>
+      <hr />
+
+      <label>
+        First Name
+        <input
+          type="text"
+          v-model="firstName"
+        />
+      </label>
+
+      <label>
+        Last Name
+        <input
+          type="text"
+          v-model="lastName"
+        />
+      </label>
     </div>
 
     <!-- CDN scripts -->
