@@ -21,7 +21,29 @@
       </select>
     </label>
 
-    <div class="circle" :class="[selectedTextColor, backgroundClasses]">
+    <label>
+      Radius
+      <input
+        type="number"
+        v-model.number="radius"
+      />
+    </label>
+
+    <label>
+      Rotation
+      <input
+        type="number"
+        v-model.number="rotation"
+        min="0"
+        max="360"
+      />
+    </label>
+
+    <div
+      class="circle"
+      :class="[selectedTextColor, backgroundClasses]"
+      :style="circleStyle"
+    >
       Hi!
     </div>
   </div>
