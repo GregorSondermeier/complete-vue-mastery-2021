@@ -6,7 +6,9 @@
   "scripts": {
     "start": "webpack --mode=development",
     "build": "webpack --mode=production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "codestyle:check": "eslint src/**/*.js",
+    "codestyle:fix": "eslint src/**/*.js --fix"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
     "autoprefixer": "^10.3.7",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.4.0",
+    "eslint": "^7.32.0",
     "mini-css-extract-plugin": "^2.4.2",
     "node-sass": "^6.0.1",
     "postcss-loader": "^6.1.1",
@@ -38,5 +41,6 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "dependencies": {}
 }
