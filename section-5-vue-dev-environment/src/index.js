@@ -1,4 +1,5 @@
-import {Pizza} from './pizza'
+import {Pizza} from './pizza';
+import './main.scss';
 
-Pizza.pepperoni()
-Pizza.bacon()
+Pizza.pepperoni();
+Pizza.bacon();
