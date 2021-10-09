@@ -2,8 +2,10 @@
   "name": "section-5-vue-dev-environment",
   "version": "1.0.0",
   "description": "Just playing around",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "start": "webpack --mode=development",
+    "build": "webpack --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
