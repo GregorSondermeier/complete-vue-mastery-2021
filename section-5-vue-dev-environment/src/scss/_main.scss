@@ -1,0 +1,13 @@
+@import "./variables";
+
+h1 {
+  color: $red;
+
+  &:hover {
+    color: $red-dark;
+  }
+
+  span {
+    color: $blue;
+  }
+}
