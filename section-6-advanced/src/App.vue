@@ -1,16 +1,12 @@
 <template>
   <h3>Hey!</h3>
-
-  <button type="button" @click="increaseAge()">Age +</button>
-  <button type="button" @click="decreaseAge()">Age -</button>
-
   <Greeting :age="age" :message="message" />
-  <User :age="age"/>
+  <User :age="age" @increaseAge="increaseAge" @decreaseAge="decreaseAge" />
 </template>
 
 <script>
 import Greeting from "./components/Greeting/Greeting.vue";
-import User from "./components/User/User";
+import User from "./components/User/User.vue";
 
 export default {
   name: 'App',
@@ -28,12 +24,12 @@ export default {
   },
 
   methods: {
-    increaseAge() {
-      this.age++;
+    increaseAge(numberOfYears) {
+      this.age += numberOfYears;
     },
 
-    decreaseAge() {
-      this.age--;
+    decreaseAge(numberOfYears) {
+      this.age -= numberOfYears;
     },
   }
 }
