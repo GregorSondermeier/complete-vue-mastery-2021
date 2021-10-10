@@ -1,9 +1,9 @@
 <template>
   <p>The user is {{ age }} years old.</p>
 
-  <button type="button" @click="increaseAge(1)">Age +</button>
+  <button type="button" @click="increaseAge(1)">Age +1</button>
   <button type="button" @click="increaseAge(3)">Age +3</button>
-  <button type="button" @click="decreaseAge(1)">Age -</button>
+  <button type="button" @click="decreaseAge(1)">Age -1</button>
   <button type="button" @click="decreaseAge(3)">Age -3</button>
 </template>
 
@@ -12,7 +12,13 @@ export default {
   name: "User",
 
   props: {
-    age: Number,
+    age: {
+      type: Number,
+      required: true,
+      validator(value) {
+        return value <= 130;
+      },
+    },
   },
 
   emits: {
