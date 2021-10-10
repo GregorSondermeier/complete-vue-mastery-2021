@@ -12,8 +12,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+$red: #cc3244;
+
 p {
-  color: #cc3244;
+  color: $red;
 }
 </style>
