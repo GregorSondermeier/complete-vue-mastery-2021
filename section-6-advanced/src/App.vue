@@ -1,13 +1,20 @@
 <template>
-  <p>{{ msg }}</p>
+  <greeting :message="message" />
 </template>
 
 <script>
+import Greeting from "./components/Greeting";
+
 export default {
   name: 'App',
+
+  components: {
+    Greeting,
+  },
+
   data() {
     return {
-      msg: "Hello World!",
+      message: "Hello World!",
     }
   }
 }
