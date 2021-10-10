@@ -3,8 +3,8 @@
 
   <button type="button" @click="increaseAge(1)">Age +1</button>
   <button type="button" @click="increaseAge(3)">Age +3</button>
-  <button type="button" @click="decreaseAge(1)">Age -1</button>
-  <button type="button" @click="decreaseAge(3)">Age -3</button>
+  <button type="button" @click="decreaseAgeFn(1)">Age -1</button>
+  <button type="button" @click="decreaseAgeFn(3)">Age -3</button>
 </template>
 
 <script>
@@ -19,20 +19,17 @@ export default {
         return value <= 130;
       },
     },
+    decreaseAgeFn: Function,
   },
 
   emits: {
     increaseAge: Number,
-    decreaseAge: Number,
   },
 
   methods: {
     increaseAge(numberOfYears) {
       this.$emit('increaseAge', numberOfYears);
     },
-    decreaseAge(numberOfYears) {
-      this.$emit('decreaseAge', numberOfYears);
-    }
   },
 }
 </script>

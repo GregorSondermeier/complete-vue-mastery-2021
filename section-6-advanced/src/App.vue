@@ -1,7 +1,7 @@
 <template>
   <h3>Hey!</h3>
   <Greeting :age="age" :message="message" />
-  <User :age="age" @increaseAge="increaseAge" @decreaseAge="decreaseAge" />
+  <User :age="age" @increaseAge="increaseAge" :decreaseAgeFn="decreaseAge" />
 </template>
 
 <script>
