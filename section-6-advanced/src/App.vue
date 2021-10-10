@@ -1,6 +1,10 @@
 <template>
   <h3>Hey!</h3>
-  <Greeting :message="message" />
+
+  <button type="button" @click="increaseAge()">Age +</button>
+  <button type="button" @click="decreaseAge()">Age -</button>
+
+  <Greeting :age="age" :message="message" />
   <User :age="age"/>
 </template>
 
@@ -21,6 +25,16 @@ export default {
       message: "Hello World!",
       age: 20,
     }
+  },
+
+  methods: {
+    increaseAge() {
+      this.age++;
+    },
+
+    decreaseAge() {
+      this.age--;
+    },
   }
 }
 </script>
