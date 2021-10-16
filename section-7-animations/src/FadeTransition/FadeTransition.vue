@@ -1,5 +1,5 @@
 <template>
-  <h2>Fade Transition</h2>
+  <h2>CSS Fade Transition</h2>
 
   <button type="button" @click="toggleFlag()">Toggle Flag</button>
 

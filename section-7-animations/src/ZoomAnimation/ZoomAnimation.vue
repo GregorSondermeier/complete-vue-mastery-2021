@@ -1,5 +1,5 @@
 <template>
-  <h2>ZoomAnimation</h2>
+  <h2>CSS Zoom Animation</h2>
 
   <button type="button" @click="toggleFlag()">Toggle Flag</button>
 
