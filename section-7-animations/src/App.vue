@@ -1,17 +1,17 @@
 <template>
   <h1>Section 7: Animations</h1>
   <hr />
-  <FadeTransition></FadeTransition>
+  <CssFadeTransition></CssFadeTransition>
   <hr />
-  <ZoomAnimation></ZoomAnimation>
+  <CssZoomAnimation></CssZoomAnimation>
 </template>
 
 <script>
-import FadeTransition from "./FadeTransition/FadeTransition";
-import ZoomAnimation from "./ZoomAnimation/ZoomAnimation";
+import CssFadeTransition from "./CssFadeTransition/CssFadeTransition";
+import CssZoomAnimation from "./CssZoomAnimation/CssZoomAnimation";
 
 export default {
   name: "App",
-  components: { ZoomAnimation, FadeTransition },
+  components: { CssZoomAnimation, CssFadeTransition },
 };
 </script>

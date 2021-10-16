@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "FadeTransition",
+  name: "CssFadeTransition",
 
   data() {
     return {
