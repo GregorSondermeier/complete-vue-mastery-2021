@@ -59,7 +59,11 @@ li {
   transition-timing-function: ease-out;
 }
 .fade-leave-active {
+  position: absolute;
   transition-duration: 0.1s;
   transition-timing-function: ease-in;
+}
+.fade-move {
+  transition: all 0.1s ease-out;
 }
 </style>
