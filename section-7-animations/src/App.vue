@@ -4,14 +4,21 @@
   <CssFadeTransition></CssFadeTransition>
   <hr />
   <CssZoomAnimation></CssZoomAnimation>
+  <hr />
+  <JsAnimation></JsAnimation>
 </template>
 
 <script>
-import CssFadeTransition from "./CssFadeTransition/CssFadeTransition";
-import CssZoomAnimation from "./CssZoomAnimation/CssZoomAnimation";
+import CssFadeTransition from "./CssFadeTransition/CssFadeTransition.vue";
+import CssZoomAnimation from "./CssZoomAnimation/CssZoomAnimation.vue";
+import JsAnimation from "./JsAnimation/JsAnimation.vue";
 
 export default {
   name: "App",
-  components: { CssZoomAnimation, CssFadeTransition },
+  components: {
+    CssFadeTransition,
+    CssZoomAnimation,
+    JsAnimation,
+  },
 };
 </script>
