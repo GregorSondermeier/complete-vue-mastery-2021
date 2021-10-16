@@ -1,10 +1,11 @@
 <template>
-  <h2>JS Animation</h2>
+  <h2>CSS and JS Transitions</h2>
 
   <button type="button" @click="toggleFlag()">Toggle Flag</button>
 
   <transition
-    :css="false"
+    :css="true"
+    name="fade"
     mode="out-in"
     @before-enter="onBeforeEnter"
     @enter="onEnter"
@@ -20,7 +21,7 @@
 
 <script>
 export default {
-  name: "JsAnimation",
+  name: "CssAndJsTransitions",
 
   data() {
     return {
@@ -36,18 +37,8 @@ export default {
     onBeforeEnter(element) {
       console.log('onBeforeEnter(element)', element);
     },
-    onEnter(element, done) {
-      console.log('onEnter(element, done)', element);
-      const animation = element.animate([
-        { transform: 'scale3d(0,0,0)' },
-        {},
-      ], {
-        duration: 1000,
-      });
-
-      animation.onfinish = () => {
-        done();
-      };
+    onEnter(element) {
+      console.log('onEnter(element)', element);
     },
     onAfterEnter(element) {
       console.log('onAfterEnter(element)', element);
@@ -55,17 +46,8 @@ export default {
     onBeforeLeave(element) {
       console.log('onBeforeLeave(element)', element);
     },
-    onLeave(element, done) {
-      const animation = element.animate([
-        {},
-        { transform: 'scale3d(0,0,0)' },
-      ], {
-        duration: 1000,
-      });
-
-      animation.onfinish = () => {
-        done();
-      };
+    onLeave(element) {
+      console.log('onLeave(element)', element);
     },
     onAfterLeave(element) {
       console.log('onAfterLeave(element)', element);
@@ -75,9 +57,20 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  width: 400px;
-  padding: 20px;
-  margin: 20px;
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition-property: opacity;
+}
+.fade-enter-active {
+  transition-duration: 0.20s;
+  transition-timing-function: ease-out;
+}
+.fade-leave-active {
+  transition-duration: 0.1s;
+  transition-timing-function: ease-in;
 }
 </style>
