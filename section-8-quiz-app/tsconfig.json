@@ -16,9 +16,15 @@
       "webpack-env"
     ],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@quiz/models": [
+        "src/models"
+      ],
+      "@quiz/components": [
+        "src/components"
+      ],
+      "@quiz/assets": [
+        "src/assets"
+      ],
     },
     "lib": [
       "esnext",
