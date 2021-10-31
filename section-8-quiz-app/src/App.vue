@@ -1,14 +1,18 @@
 <template>
   <div class="ctr" v-if="isLoaded">
     <ProgressBar :questions-answered="questionsAnswered" :total-number-of-questions="totalNumberOfQuestions" />
-    <template v-if="!isQuizFinished">
-      <Question :question="activeQuestion" @questionAnswered="questionAnswered" />
-    </template>
-    <Result
-      v-else
-      :results="results"
-      :questions-answered-correctly="questionsAnsweredCorrectly"
-    />
+    <transition name="fade" mode="out-in">
+      <Question
+        v-if="!isQuizFinished"
+        :question="activeQuestion"
+        @questionAnswered="questionAnswered"
+      />
+      <Result
+        v-else
+        :results="results"
+        :questions-answered-correctly="questionsAnsweredCorrectly"
+      />
+    </transition>
     <button
       type="button"
       class="reset-btn"
