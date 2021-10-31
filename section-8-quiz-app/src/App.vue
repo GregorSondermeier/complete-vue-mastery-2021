@@ -1,20 +1,29 @@
 <template>
-  <div class="ctr">
+  <div class="ctr" v-if="isLoaded">
     <ProgressBar :questions-answered="questionsAnswered" :total-number-of-questions="totalNumberOfQuestions" />
     <template v-if="!isQuizFinished">
       <Question :question="activeQuestion" @questionAnswered="questionAnswered" />
     </template>
-    <Result v-else />
-    <button type="button" class="reset-btn">Reset</button>
+    <Result
+      v-else
+      :results="results"
+      :questions-answered-correctly="questionsAnsweredCorrectly"
+    />
+    <button
+      type="button"
+      class="reset-btn"
+      @click.prevent="reset()"
+    >Reset</button>
   </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import {Options, Vue} from "vue-class-component";
 import ResultComponent from "./components/result.component.vue";
 import { Question, Result } from "@quiz/models";
 import ProgressBarComponent from "./components/progress-bar.component.vue";
 import QuestionComponent from "./components/question.component.vue";
+import { getQuestions, getResults } from "./utils/quiz.utils";
 
 @Options({
   components: {
@@ -26,93 +35,23 @@ import QuestionComponent from "./components/question.component.vue";
   data(): {
     questionsAnswered: number;
     questionsAnsweredCorrectly: number;
-    questions: Question[];
-    results: Result[];
+    questions?: Question[];
+    results?: Result[];
   } {
     return {
       questionsAnswered: 0,
       questionsAnsweredCorrectly: 0,
-      questions: [
-        {
-          q: 'What is 2 + 2?',
-          answers: [
-            {
-              text: '4',
-              isCorrect: true
-            },
-            {
-              text: '3',
-              isCorrect: false
-            },
-            {
-              text: 'Fish',
-              isCorrect: false
-            },
-            {
-              text: '5',
-              isCorrect: false
-            }
-          ]
-        },
-        {
-          q: 'How many letters are in the word "Banana"?',
-          answers: [
-            {
-              text: '5',
-              isCorrect: false
-            },
-            {
-              text: '7',
-              isCorrect: false
-            },
-            {
-              text: '6',
-              isCorrect: true
-            },
-            {
-              text: '12',
-              isCorrect: false
-            }
-          ]
-        },
-        {
-          q: 'Find the missing letter: C_ke',
-          answers: [
-            {
-              text: 'e',
-              isCorrect: false
-            },
-            {
-              text: 'a',
-              isCorrect: true
-            },
-            {
-              text: 'i',
-              isCorrect: false
-            }
-          ]
-        },
-      ] as Question[],
-      results: [
-        {
-          min: 0,
-          max: 2,
-          title: "Try again!",
-          desc: "Do a little more studying and you may succeed!"
-        },
-        {
-          min: 3,
-          max: 3,
-          title: "Wow, you're a genius!",
-          desc: "Studying has definitely paid off for you!"
-        }
-      ] as Result[],
+      questions: undefined,
+      results: undefined,
     }
   },
 
   computed: {
     activeQuestion(): Question {
       return this.questions[this.questionsAnswered];
+    },
+    isLoaded(): boolean {
+      return !!this.questions && !!this.results;
     },
     isQuizFinished(): boolean {
       return this.questionsAnswered >= this.totalNumberOfQuestions;
@@ -128,8 +67,18 @@ import QuestionComponent from "./components/question.component.vue";
       if (isCorrect) {
         this.questionsAnsweredCorrectly++;
       }
-    }
-  }
+    },
+
+    reset() {
+      this.questionsAnswered = 0;
+      this.questionsAnsweredCorrectly = 0;
+    },
+  },
+
+  async created() {
+    this.questions = await getQuestions();
+    this.results = await getResults();
+  },
 })
 export default class App extends Vue {}
 </script>
