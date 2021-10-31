@@ -5,6 +5,7 @@
       :key="answer.text"
       class="answer"
       :answer="answer"
+      @click.prevent="selectAnswer(answer)"
     />
   </div>
 </template>
@@ -22,8 +23,14 @@ import AnswerComponent from "./answer.component.vue";
   props: {
     answers: { type: Object as PropType<Answer[]> },
   },
+  emits: [
+    'answerSelected',
+  ],
+  methods: {
+    selectAnswer(answer: Answer): void {
+      this.$emit('answerSelected', { answer });
+    }
+  }
 })
-export default class AnswersComponent extends Vue {
-  answers!: Answer[];
-}
+export default class AnswersComponent extends Vue {}
 </script>

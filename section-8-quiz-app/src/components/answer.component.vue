@@ -14,7 +14,5 @@ import { PropType } from "vue";
     answer: { type: Object as PropType<Answer> },
   },
 })
-export default class AnswerComponent extends Vue {
-  answer!: Answer;
-}
+export default class AnswerComponent extends Vue {}
 </script>

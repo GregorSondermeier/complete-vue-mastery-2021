@@ -1,6 +1,9 @@
 <template>
   <div class="ctr">
-    <Questions v-if="questionsAnswered < questions.length" :questions="questions" />
+    <ProgressBar :questions-answered="questionsAnswered" :total-number-of-questions="totalNumberOfQuestions" />
+    <template v-if="!isQuizFinished">
+      <Question :question="activeQuestion" @questionAnswered="questionAnswered" />
+    </template>
     <Result v-else />
     <button type="button" class="reset-btn">Reset</button>
   </div>
@@ -8,22 +11,27 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import QuestionsComponent from "./components/questions.component.vue";
 import ResultComponent from "./components/result.component.vue";
 import { Question, Result } from "@quiz/models";
+import ProgressBarComponent from "./components/progress-bar.component.vue";
+import QuestionComponent from "./components/question.component.vue";
 
 @Options({
   components: {
-    Questions: QuestionsComponent,
+    ProgressBar: ProgressBarComponent,
+    Question: QuestionComponent,
     Result: ResultComponent,
   },
+
   data(): {
     questionsAnswered: number;
+    questionsAnsweredCorrectly: number;
     questions: Question[];
     results: Result[];
   } {
     return {
       questionsAnswered: 0,
+      questionsAnsweredCorrectly: 0,
       questions: [
         {
           q: 'What is 2 + 2?',
@@ -99,6 +107,27 @@ import { Question, Result } from "@quiz/models";
           desc: "Studying has definitely paid off for you!"
         }
       ] as Result[],
+    }
+  },
+
+  computed: {
+    activeQuestion(): Question {
+      return this.questions[this.questionsAnswered];
+    },
+    isQuizFinished(): boolean {
+      return this.questionsAnswered >= this.totalNumberOfQuestions;
+    },
+    totalNumberOfQuestions(): number {
+      return this.questions.length;
+    }
+  },
+
+  methods: {
+    questionAnswered({ isCorrect }: { isCorrect: boolean }): void {
+      this.questionsAnswered++;
+      if (isCorrect) {
+        this.questionsAnsweredCorrectly++;
+      }
     }
   }
 })
