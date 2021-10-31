@@ -8,9 +8,10 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { Result } from "@/models";
+import { findResult } from "@/utils";
 import { PropType } from "vue";
-import { Result } from "@quiz/models";
+import { Options, Vue } from "vue-class-component";
 
 @Options({
   props: {
@@ -18,9 +19,8 @@ import { Result } from "@quiz/models";
     results: { type: Object as PropType<Result[]> },
   },
   computed: {
-    result(): Result {
-      return this.results.find((result: Result) =>
-        result.min <= this.questionsAnsweredCorrectly && this.questionsAnsweredCorrectly <= result.max);
+    result(): Result | undefined {
+      return findResult(this.results, this.questionsAnsweredCorrectly)
     }
   }
 })

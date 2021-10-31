@@ -18,12 +18,12 @@
 </template>
 
 <script lang="ts">
-import {Options, Vue} from "vue-class-component";
-import ResultComponent from "./components/result.component.vue";
-import { Question, Result } from "@quiz/models";
-import ProgressBarComponent from "./components/progress-bar.component.vue";
-import QuestionComponent from "./components/question.component.vue";
-import { getQuestions, getResults } from "./utils/quiz.utils";
+import { Options, Vue } from "vue-class-component";
+import { Question, Result } from "@/models";
+import ProgressBarComponent from "@/components/ProgressBar.vue";
+import QuestionComponent from "@/components/Question.vue";
+import ResultComponent from "@/components/Result.vue";
+import { getQuestions, getResults } from "@/infrastructure";
 
 @Options({
   components: {

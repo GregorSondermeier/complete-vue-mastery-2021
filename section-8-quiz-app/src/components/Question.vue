@@ -6,10 +6,10 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import {Answer, Question} from "@quiz/models";
+import { Answer, Question } from "@/models";
 import { PropType } from "vue";
-import AnswersComponent from "./answers.component.vue";
+import { Options, Vue } from "vue-class-component";
+import AnswersComponent from "./Answers.vue";
 
 @Options({
   components: {

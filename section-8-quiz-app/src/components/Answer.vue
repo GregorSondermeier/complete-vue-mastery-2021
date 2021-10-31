@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import { Answer } from "@quiz/models";
+import { Answer } from "@/models";
 import { PropType } from "vue";
+import { Options, Vue } from "vue-class-component";
 
 @Options({
   props: {

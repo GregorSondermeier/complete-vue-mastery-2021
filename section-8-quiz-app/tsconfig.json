@@ -16,10 +16,10 @@
       "webpack-env"
     ],
     "paths": {
-      "@quiz/assets": [ "src/assets" ],
-      "@quiz/components": [ "src/components" ],
-      "@quiz/models": [ "src/models" ],
-      "@quiz/utils": [ "src/utils" ]
+      "@/components/*": [ "src/components/*" ],
+      "@/infrastructure": [ "src/infrastructure/index.ts" ],
+      "@/models": [ "src/models/index.ts" ],
+      "@/utils": [ "src/utils/index.ts" ],
     },
     "lib": [
       "esnext",

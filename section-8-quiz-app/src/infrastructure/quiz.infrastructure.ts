@@ -1,4 +1,4 @@
-import { Question, Result } from "@quiz/models";
+import { Question, Result } from "@/models";
 
 export async function getQuestions(): Promise<Question[]> {
   let response = await fetch("./questions.json");
