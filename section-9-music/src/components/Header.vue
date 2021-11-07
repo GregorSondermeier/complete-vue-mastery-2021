@@ -32,12 +32,12 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   name: 'Header',
   methods: {
-    toggleShowAuthModal() {
-      this.$store.commit('toggleShowAuthModal');
-    },
+    ...mapMutations(['toggleShowAuthModal']),
   },
 };
 </script>
