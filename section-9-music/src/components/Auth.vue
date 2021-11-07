@@ -61,30 +61,34 @@
           <ul class="flex flex-wrap mb-4">
             <li class="flex-auto text-center">
               <a
-                class="
-                  block
-                  rounded
-                  py-3
-                  px-4
-                  transition
-                  hover:text-white
-                  text-white
-                  bg-blue-600
-                "
-                href="#"
+                class="block rounded py-3 px-4 transition cursor-pointer"
+                :class="{
+                  'hover:text-white text-white bg-blue-600':
+                    activeTab === 'login',
+                  'hover:text-blue-600': activeTab === 'register',
+                }"
+                @click.prevent="setActiveTab('login')"
               >
                 Login
               </a>
             </li>
             <li class="flex-auto text-center">
-              <a class="block rounded py-3 px-4 transition" href="#">
+              <a
+                class="block rounded py-3 px-4 transition cursor-pointer"
+                :class="{
+                  'hover:text-white text-white bg-blue-600':
+                    activeTab === 'register',
+                  'hover:text-blue-600': activeTab === 'login',
+                }"
+                @click.prevent="setActiveTab('register')"
+              >
                 Register
               </a>
             </li>
           </ul>
 
           <!-- Login Form -->
-          <form>
+          <form v-if="activeTab === 'login'">
             <!-- Email -->
             <div class="mb-3">
               <label class="inline-block mb-2">Email</label>
@@ -143,7 +147,7 @@
             </button>
           </form>
           <!-- Registration Form -->
-          <form>
+          <form v-else>
             <!-- Name -->
             <div class="mb-3">
               <label class="inline-block mb-2">Name</label>
@@ -301,11 +305,19 @@ import { mapMutations, mapState } from 'vuex';
 
 export default {
   name: 'Auth',
+  data() {
+    return {
+      activeTab: 'login',
+    };
+  },
   computed: {
     ...mapState(['isAuthModalShowing']),
   },
   methods: {
     ...mapMutations(['toggleShowAuthModal']),
+    setActiveTab(tabName) {
+      this.activeTab = tabName;
+    },
   },
 };
 </script>
