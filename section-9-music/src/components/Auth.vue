@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="getIsAuthModalShowing"
+    v-if="isAuthModalShowing"
     class="fixed z-10 inset-0 overflow-y-auto"
     id="modal"
   >
@@ -297,12 +297,12 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
+import { mapMutations, mapState } from 'vuex';
 
 export default {
   name: 'Auth',
   computed: {
-    ...mapGetters(['getIsAuthModalShowing']),
+    ...mapState(['isAuthModalShowing']),
   },
   methods: {
     ...mapMutations(['toggleShowAuthModal']),
