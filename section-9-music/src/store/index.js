@@ -2,11 +2,11 @@ import { createStore } from 'vuex';
 
 export default createStore({
   state: {
-    showAuthModal: false,
+    isAuthModalShowing: false,
   },
   mutations: {
     toggleShowAuthModal: (state) => {
-      state.showAuthModal = !state.showAuthModal;
+      state.isAuthModalShowing = !state.isAuthModalShowing;
     },
   },
 });
