@@ -9,10 +9,21 @@
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
           <li>
-            <a class="px-2 text-white" href="#">Login / Register</a>
+            <a
+              class="px-2 text-white"
+              href="#"
+              @click.prevent="toggleAuthModal"
+            >
+              Login / Register
+            </a>
           </li>
           <li>
-            <a class="px-2 text-white" href="#">Manage</a>
+            <a
+              class="px-2 text-white"
+              href="#"
+            >
+              Manage
+            </a>
           </li>
         </ul>
       </div>
@@ -22,10 +33,13 @@
 
 <script>
 export default {
-  name: "Header",
+  name: 'Header',
+  methods: {
+    toggleAuthModal() {
+      console.log(this.$store.state.showAuthModal);
+      this.$store.state.showAuthModal = !this.$store.state.showAuthModal;
+      console.log(this.$store.state.showAuthModal);
+    },
+  },
 };
 </script>
-
-<style scoped>
-
-</style>
