@@ -1,5 +1,9 @@
 <template>
-  <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="modal">
+  <div
+    class="fixed z-10 inset-0 overflow-y-auto"
+    :class="{ hidden: !isAuthModalShowing }"
+    id="modal"
+  >
     <div
       class="
         flex
@@ -14,7 +18,10 @@
       "
     >
       <div class="fixed inset-0 transition-opacity">
-        <div class="absolute inset-0 bg-gray-800 opacity-75"></div>
+        <div
+          class="absolute inset-0 bg-gray-800 opacity-75"
+          @click.prevent="toggleShowAuthModal"
+        ></div>
       </div>
 
       <!-- This element is to trick the browser into centering the modal contents. -->
@@ -42,7 +49,10 @@
           <div class="flex justify-between items-center pb-4">
             <p class="text-2xl font-bold">Your Account</p>
             <!-- Modal Close Button -->
-            <div class="modal-close cursor-pointer z-50">
+            <div
+              class="modal-close cursor-pointer z-50"
+              @click.prevent="toggleShowAuthModal"
+            >
               <i class="fas fa-times"></i>
             </div>
           </div>
@@ -287,7 +297,17 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   name: 'Auth',
+  computed: {
+    isAuthModalShowing() {
+      return this.$store.getters.getIsAuthModalShowing;
+    },
+  },
+  methods: {
+    ...mapMutations(['toggleShowAuthModal']),
+  },
 };
 </script>
