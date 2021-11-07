@@ -12,7 +12,7 @@
             <a
               class="px-2 text-white"
               href="#"
-              @click.prevent="toggleAuthModal"
+              @click.prevent="toggleShowAuthModal"
             >
               Login / Register
             </a>
@@ -35,10 +35,8 @@
 export default {
   name: 'Header',
   methods: {
-    toggleAuthModal() {
-      console.log(this.$store.state.showAuthModal);
-      this.$store.state.showAuthModal = !this.$store.state.showAuthModal;
-      console.log(this.$store.state.showAuthModal);
+    toggleShowAuthModal() {
+      this.$store.commit('toggleShowAuthModal');
     },
   },
 };
