@@ -1,5 +1,5 @@
 <template>
-  <VeeForm :validation-schema="validationSchema">
+  <VeeForm :validation-schema="validationSchema" @submit="register">
     <!-- Name -->
     <div class="mb-3">
       <label class="inline-block mb-2">Name</label>
@@ -182,6 +182,11 @@ export default {
         acceptTermsOfService: 'required',
       },
     };
+  },
+  methods: {
+    register(values) {
+      console.log('values:', values);
+    },
   },
 };
 </script>
