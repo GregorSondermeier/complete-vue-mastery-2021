@@ -67,6 +67,10 @@ export const VeeValidate = {
             return `The field ${context.field} is invalid.`;
         }
       },
+      validateOnBlur: true,
+      validateOnChange: true,
+      validateOnInput: false,
+      validateOnModelUpdate: true,
     });
   },
 };
