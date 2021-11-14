@@ -40,25 +40,32 @@ export const VeeValidate = {
 
     configure({
       generateMessage: (context) => {
-        const messages = {
-          acceptTermsOfService: 'You must accept the Terms of Service.',
-          alphaSpaces: `The field ${context.field} may only contain alphabetical characters and spaces.`,
-          email: `The field ${context.field} must be a valid email.`,
-          max: `The field ${context.field} is too long.`,
-          maxValue: `The field ${context.field} is too high.`,
-          min: `The field ${context.field} is too short.`,
-          minValue: `The field ${context.field} is too low.`,
-          notOneOf: `You are not allowed to use this value for the field ${context.field}.`,
-          notOneOfTheseCountries:
-            'Due to restrictions, we do not accept users from this location',
-          passwordsMustMatch: 'The passwords do not match.',
-          required: `The field ${context.field} is required.`,
-        };
-
-        return (
-          messages[context.rule.name] ||
-          `The field ${context.field} is invalid.`
-        );
+        switch (context.rule.name) {
+          case 'acceptTermsOfService':
+            return 'You must accept the Terms of Service.';
+          case 'alphaSpaces':
+            return `The field ${context.field} may only contain alphabetical characters and spaces.`;
+          case 'email':
+            return `The field ${context.field} must be a valid email.`;
+          case 'max':
+            return `The field ${context.field} is too long.`;
+          case 'maxValue':
+            return `The field ${context.field} is too high.`;
+          case 'min':
+            return `The field ${context.field} is too short.`;
+          case 'minValue':
+            return `The field ${context.field} is too low.`;
+          case 'notOneOf':
+            return `You are not allowed to use this value for the field ${context.field}.`;
+          case 'notOneOfTheseCountries':
+            return 'Due to restrictions, we do not accept users from this location';
+          case 'passwordsMustMatch':
+            return 'The passwords do not match.';
+          case required:
+            return `The field ${context.field} is required.`;
+          default:
+            return `The field ${context.field} is invalid.`;
+        }
       },
     });
   },
