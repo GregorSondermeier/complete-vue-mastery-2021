@@ -1,10 +1,11 @@
 <template>
-  <form>
+  <vee-form>
     <!-- Name -->
     <div class="mb-3">
       <label class="inline-block mb-2">Name</label>
-      <input
+      <vee-field
         type="text"
+        name="name"
         class="
           block
           w-full
@@ -142,7 +143,7 @@
     >
       Submit
     </button>
-  </form>
+  </vee-form>
 </template>
 
 <script>
