@@ -193,7 +193,7 @@ export default {
         name: 'required|min:3|max:100|alphaSpaces',
         email: 'required|min:5|max:100|email',
         age: 'required|minValue:18|maxValue:100',
-        password: 'required|min:8|max:100',
+        password: 'required|min:8|max:32',
         confirmPassword: 'passwordsMustMatch:@password',
         country: 'required|notOneOfTheseCountries:NotAllowedCountry',
         acceptTermsOfService: 'acceptTermsOfService',
@@ -216,8 +216,13 @@ export default {
       this.alertMessage = 'Please wait. Your account is being generated.';
 
       setTimeout(() => {
-        this.alertVariant = 'bg-green-500';
-        this.alertMessage = 'Success! Your account has been created.';
+        if (Math.random() > 0.5) {
+          this.alertVariant = 'bg-green-500';
+          this.alertMessage = 'Success! Your account has been created.';
+        } else {
+          this.alertVariant = 'bg-red-500';
+          this.alertMessage = 'Error! User already exists.';
+        }
       }, 1000);
     },
   },
