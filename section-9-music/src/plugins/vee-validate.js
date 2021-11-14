@@ -1,5 +1,6 @@
 import {
   alpha_spaces as alphaSpaces,
+  confirmed,
   email,
   max,
   max_value as maxValue,
@@ -24,6 +25,7 @@ export const VeeValidate = {
     app.component('VeeErrorMessage', VeeErrorMessage);
 
     defineRule('alphaSpaces', alphaSpaces);
+    defineRule('confirmed', confirmed);
     defineRule('email', email);
     defineRule('max', max);
     defineRule('maxValue', maxValue);
