@@ -112,7 +112,9 @@
     <!-- Country -->
     <div class="mb-3">
       <label class="inline-block mb-2">Country</label>
-      <select
+      <VeeField
+        as="select"
+        name="country"
         class="
           block
           w-full
@@ -129,12 +131,22 @@
         <option value="USA">USA</option>
         <option value="Mexico">Mexico</option>
         <option value="Germany">Germany</option>
-      </select>
+        <option value="NotAllowedCountry">Not Allowed Country</option>
+      </VeeField>
+      <VeeErrorMessage name="country" class="text-red-600" />
     </div>
     <!-- TOS -->
     <div class="mb-3 pl-6">
-      <input type="checkbox" class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
-      <label class="inline-block">Accept terms of service</label>
+      <div class="block">
+        <VeeField
+          type="checkbox"
+          name="acceptTermsOfService"
+          :value="true"
+          class="w-4 h-4 float-left -ml-6 mt-1 rounded"
+        />
+        <label class="inline-block">Accept terms of service</label>
+      </div>
+      <VeeErrorMessage name="acceptTermsOfService" class="text-red-600" />
     </div>
     <button
       type="submit"
@@ -166,8 +178,8 @@ export default {
         age: 'required|minValue:18|maxValue:100',
         password: 'required|min:5|max:100',
         confirmPassword: 'confirmed:@password',
-        country: '',
-        tos: '',
+        country: 'required|notOneOf:NotAllowedCountry',
+        acceptTermsOfService: 'required',
       },
     };
   },

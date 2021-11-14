@@ -6,6 +6,7 @@ import {
   max_value as maxValue,
   min,
   min_value as minValue,
+  not_one_of as notOneOf,
   required,
 } from '@vee-validate/rules';
 import {
@@ -31,6 +32,7 @@ export const VeeValidate = {
     defineRule('maxValue', maxValue);
     defineRule('min', min);
     defineRule('minValue', minValue);
+    defineRule('notOneOf', notOneOf);
     defineRule('required', required);
   },
 };
