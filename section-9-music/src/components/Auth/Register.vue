@@ -47,8 +47,9 @@
     <!-- Age -->
     <div class="mb-3">
       <label class="inline-block mb-2">Age</label>
-      <input
+      <VeeField
         type="number"
+        name="age"
         class="
           block
           w-full
@@ -62,6 +63,7 @@
           rounded
         "
       />
+      <VeeErrorMessage name="age" class="text-red-600" />
     </div>
     <!-- Password -->
     <div class="mb-3">
@@ -157,7 +159,7 @@ export default {
       validationSchema: {
         name: 'required|min:3|max:100|alphaSpaces',
         email: 'required|min:5|max:100|email',
-        age: '',
+        age: 'required|minValue:18|maxValue:100',
         password: '',
         confirmPassword: '',
         country: '',

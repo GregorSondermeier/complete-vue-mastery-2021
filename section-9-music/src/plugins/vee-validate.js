@@ -2,7 +2,9 @@ import {
   alpha_spaces as alphaSpaces,
   email,
   max,
+  max_value as maxValue,
   min,
+  min_value as minValue,
   required,
 } from '@vee-validate/rules';
 import {
@@ -24,7 +26,9 @@ export const VeeValidate = {
     defineRule('alphaSpaces', alphaSpaces);
     defineRule('email', email);
     defineRule('max', max);
+    defineRule('maxValue', maxValue);
     defineRule('min', min);
+    defineRule('minValue', minValue);
     defineRule('required', required);
   },
 };
