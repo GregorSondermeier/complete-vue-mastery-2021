@@ -1,9 +1,9 @@
 <template>
-  <vee-form>
+  <VeeForm :validation-schema="validationSchema">
     <!-- Name -->
     <div class="mb-3">
       <label class="inline-block mb-2">Name</label>
-      <vee-field
+      <VeeField
         type="text"
         name="name"
         class="
@@ -20,6 +20,7 @@
         "
         placeholder="Enter Name"
       />
+      <VeeErrorMessage name="name" class="text-red-600" />
     </div>
     <!-- Email -->
     <div class="mb-3">
@@ -143,11 +144,24 @@
     >
       Submit
     </button>
-  </vee-form>
+  </VeeForm>
 </template>
 
 <script>
 export default {
   name: 'Register',
+  data() {
+    return {
+      validationSchema: {
+        name: 'required',
+        email: '',
+        age: '',
+        password: '',
+        confirmPassword: '',
+        country: '',
+        tos: '',
+      },
+    };
+  },
 };
 </script>
