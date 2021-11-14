@@ -1,5 +1,5 @@
 <template>
-  <VeeForm :validation-schema="validationSchema" @submit="register">
+  <VeeForm :validation-schema="validationSchema" @submit="register" :initial-values="initialValues">
     <!-- Name -->
     <div class="mb-3">
       <label class="inline-block mb-2">Name</label>
@@ -184,6 +184,9 @@ export default {
         confirmPassword: 'confirmed:@password',
         country: 'required|notOneOf:NotAllowedCountry',
         acceptTermsOfService: 'required',
+      },
+      initialValues: {
+        country: 'Germany',
       },
     };
   },
