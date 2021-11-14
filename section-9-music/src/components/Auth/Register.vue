@@ -153,7 +153,7 @@ export default {
   data() {
     return {
       validationSchema: {
-        name: 'required',
+        name: 'required|min:3|max:100|alphaSpaces',
         email: '',
         age: '',
         password: '',
