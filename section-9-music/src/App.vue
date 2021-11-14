@@ -474,18 +474,22 @@
     </div>
   </div>
 
-  <auth-modal />
+  <auth-modal v-if="isAuthModalShowing" />
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Header from './components/Header.vue';
-import Auth from './components/Auth.vue';
+import Auth from './components/Auth/Auth.vue';
 
 export default {
   name: 'App',
   components: {
     AppHeader: Header,
     AuthModal: Auth,
+  },
+  computed: {
+    ...mapState(['isAuthModalShowing']),
   },
 };
 </script>
