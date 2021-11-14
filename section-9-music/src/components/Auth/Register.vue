@@ -25,8 +25,9 @@
     <!-- Email -->
     <div class="mb-3">
       <label class="inline-block mb-2">Email</label>
-      <input
+      <VeeField
         type="email"
+        name="email"
         class="
           block
           w-full
@@ -41,6 +42,7 @@
         "
         placeholder="Enter Email"
       />
+      <VeeErrorMessage name="email" class="text-red-600" />
     </div>
     <!-- Age -->
     <div class="mb-3">
@@ -154,7 +156,7 @@ export default {
     return {
       validationSchema: {
         name: 'required|min:3|max:100|alphaSpaces',
-        email: '',
+        email: 'required|min:5|max:100|email',
         age: '',
         password: '',
         confirmPassword: '',

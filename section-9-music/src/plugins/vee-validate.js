@@ -1,8 +1,9 @@
 import {
-  required,
-  min,
-  max,
   alpha_spaces as alphaSpaces,
+  email,
+  max,
+  min,
+  required,
 } from '@vee-validate/rules';
 import {
   ErrorMessage as VeeErrorMessage,
@@ -20,9 +21,10 @@ export const VeeValidate = {
     app.component('VeeField', VeeField);
     app.component('VeeErrorMessage', VeeErrorMessage);
 
-    defineRule('required', required);
-    defineRule('min', min);
-    defineRule('max', max);
     defineRule('alphaSpaces', alphaSpaces);
+    defineRule('email', email);
+    defineRule('max', max);
+    defineRule('min', min);
+    defineRule('required', required);
   },
 };
