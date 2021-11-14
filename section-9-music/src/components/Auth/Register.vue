@@ -1,5 +1,16 @@
 <template>
-  <VeeForm :validation-schema="validationSchema" @submit="register" :initial-values="initialValues">
+  <div
+    v-if="isAlertShowing"
+    class="text-white text-center font-bold p-5 mb-4"
+    :class="alertVariant"
+  >
+    {{ alertMessage }}
+  </div>
+  <VeeForm
+    :validation-schema="validationSchema"
+    @submit="register"
+    :initial-values="initialValues"
+  >
     <!-- Name -->
     <div class="mb-3">
       <label class="inline-block mb-2">Name</label>
@@ -152,8 +163,10 @@
       </div>
       <VeeErrorMessage name="acceptTermsOfService" class="text-red-600" />
     </div>
+    <!-- Submit Button -->
     <button
       type="submit"
+      :disabled="isLoading"
       class="
         block
         w-full
@@ -188,11 +201,24 @@ export default {
       initialValues: {
         country: 'Germany',
       },
+      isLoading: false,
+      isAlertShowing: false,
+      alertVariant: 'bg-blue-500',
+      alertMessage: 'Please wait. Your account is being generated.',
     };
   },
   methods: {
     register(values) {
       console.log('values:', values);
+      this.isAlertShowing = true;
+      this.isLoading = true;
+      this.alertVariant = 'bg-blue-500';
+      this.alertMessage = 'Please wait. Your account is being generated.';
+
+      setTimeout(() => {
+        this.alertVariant = 'bg-green-500';
+        this.alertMessage = 'Success! Your account has been created.';
+      }, 1000);
     },
   },
 };
